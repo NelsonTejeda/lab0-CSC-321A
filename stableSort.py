@@ -97,6 +97,7 @@ while(freeList[men[itr]] == 0 and itr >= 0):
         if(itr == -1):
             break
         print("----------------------------")
+        nextWoman = 0
     elif(preferences[w].index(m) > preferences[w].index(freeList[w])):
         #setting the guy that got dumped free
         dumped = freeList[w]
@@ -112,6 +113,7 @@ while(freeList[men[itr]] == 0 and itr >= 0):
         men.append(dumped)
         print(w + " likes " + m + " more, and dumps " + dumped)
         print("----------------------------")
+        nextWoman = 0
     else:
         print(w + " rejects " + m)
         nextWoman += 1
