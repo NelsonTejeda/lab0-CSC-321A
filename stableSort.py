@@ -1,11 +1,20 @@
 import random
+import sys
+import time
+import timeit
+
+givenRange = int(str(sys.argv[1]))
+
+females = []
+males = []
+
+for f in range(0,int(givenRange/2)):
+    females.append(str(f))
+for m in range(int(givenRange/2),givenRange):
+    males.append(str(m))
 
 
-females = ["ada","aja","aki","alix","ally","alma","amy", "ann","anna","ara"]
-males = ["pete","zane","chet","che","dane","guy","grey","kai","van","jax"]
-
-
-def randomizeFemales(f):
+def randomizeFemales(f:list):
     c = 0
     while c != len(f):
         ran = random.randint(0,len(f) - 1)
@@ -13,9 +22,10 @@ def randomizeFemales(f):
         f[c] = f[ran]
         f[ran] = temp
         c += 1
-    return f
-
-def randomizeMales(m):
+    ans = f.copy()
+    return ans
+    
+def randomizeMales(m:list):
     c = 0
     while c != len(m):
         ran = random.randint(0,len(m) - 1)
@@ -23,85 +33,47 @@ def randomizeMales(m):
         m[c] = m[ran]
         m[ran] = temp
         c += 1
-    return m
+    ans = m.copy()
+    return ans
 
-# for i in randomizeFemales(females):
-#     print(i)
-# print("SPACE!!!")
-# for k in randomizeMales(males):
-#     print(k)
+preferences = {}
+
+for pm in males:
+    preferences[pm] = randomizeFemales(females)
+for pf in females:
+    preferences[pf] = randomizeMales(males)
+
+freeList = {}
+
+for flm in males:
+    freeList[flm] = -1
+for flf in females:
+    freeList[flf] = -1
+
+men = []
+for list in males:
+    men.append(list)
 
 
-preferences = {
-    "pete" : randomizeFemales(females),
-    "zane" : randomizeFemales(females),
-    "chet" : randomizeFemales(females),
-    "che" : randomizeFemales(females),
-    "dane" : randomizeFemales(females),
-    "guy" : randomizeFemales(females),
-    "grey" : randomizeFemales(females),
-    "kai" : randomizeFemales(females),
-    "van" : randomizeFemales(females),
-    "jax" : randomizeFemales(females),
-
-    "ada" : randomizeMales(males),
-    "aja" : randomizeMales(males),
-    "aki" : randomizeMales(males),
-    "alix" : randomizeMales(males),
-    "ally" : randomizeMales(males),
-    "alma" : randomizeMales(males),
-    "amy" : randomizeMales(males),
-    "ann" : randomizeMales(males),
-    "anna" : randomizeMales(males),
-    "ara" : randomizeMales(males)
-}
-
-freeList = {
-    "pete" : 0,
-    "zane" : 0,
-    "chet" : 0,
-    "che" : 0,
-    "dane" : 0,
-    "guy" : 0,
-    "grey" : 0,
-    "kai" : 0,
-    "van" : 0,
-    "jax" : 0,
-
-    "ada" : 0,
-    "aja" : 0,
-    "aki" : 0,
-    "alix" : 0,
-    "ally" : 0,
-    "alma" : 0,
-    "amy" : 0,
-    "ann" : 0,
-    "anna" : 0,
-    "ara" : 0
-}
-
-men = ["pete","zane","chet","che","dane","guy","grey","kai","van","jax"]
 itr = len(men) - 1
 nextWoman = 0
 #set a counter to the men that are free
-while(freeList[men[itr]] == 0 and itr >= 0):
+while(freeList[men[itr]] == -1 and itr >= 0):
     m = men[itr]
     w = preferences[m][nextWoman]
-    print(m + " proposes to " + w)
-    if(freeList[w] == 0):
+    if(freeList[w] == -1):
         freeList[m] = w
         freeList[w] = m
-        print(w + " accepts")
+        #pop the man off the stack to confirm he is taken
         men.pop(itr)
         itr -= 1
         if(itr == -1):
             break
-        print("----------------------------")
         nextWoman = 0
     elif(preferences[w].index(m) > preferences[w].index(freeList[w])):
         #setting the guy that got dumped free
         dumped = freeList[w]
-        freeList[dumped] = 0
+        freeList[dumped] = -1
         #assigning the man and woman
         freeList[m] = w
         freeList[w] = m
@@ -111,15 +83,16 @@ while(freeList[men[itr]] == 0 and itr >= 0):
         men.pop(itr)
         #add the man that was dumped back on the stack
         men.append(dumped)
-        print(w + " likes " + m + " more, and dumps " + dumped)
-        print("----------------------------")
         nextWoman = 0
     else:
-        print(w + " rejects " + m)
         nextWoman += 1
-
+#execution_time = timeit.timeit(Self, number=1)
 print(freeList)
-print(men)
-print(itr)
+#print(execution_time)
 
-#jax,anna -> van,anna
+def main():
+    print("hi")
+
+if __name__=="__main__":
+    main()
+
