@@ -1,8 +1,11 @@
+#!/usr/bin/python
 import random
 import sys
 import time
 import timeit
+from datetime import datetime
 
+startTime = datetime.now()
 givenRange = int(str(sys.argv[1]))
 
 females = []
@@ -88,10 +91,11 @@ while(freeList[men[itr]] == -1 and itr >= 0):
         nextWoman += 1
 #execution_time = timeit.timeit(Self, number=1)
 print(freeList)
+print(datetime.now() - startTime)
 #print(execution_time)
 
 def main():
-    print("hi")
+    print("")
 
 if __name__=="__main__":
     main()
