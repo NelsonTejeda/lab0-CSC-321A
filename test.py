@@ -1,9 +1,4 @@
+import os
 
-import random
-females = ["ada","aja","aki","alix","ally","alma","amy", "ann","anna","ara"]
-print(random.randint(0,9))
-
-d = {}
-d["yo"] = -1
-
-print(d)
+for i in range(1000,5000,1000):
+    os.system('python stableSort.py {}'.format(i))

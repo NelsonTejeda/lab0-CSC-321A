@@ -1,19 +1,16 @@
 #!/usr/bin/python
 import random
 import sys
-import time
-import timeit
 from datetime import datetime
 
-startTime = datetime.now()
 givenRange = int(str(sys.argv[1]))
 
 females = []
 males = []
 
-for f in range(0,int(givenRange/2)):
+for f in range(0,givenRange):
     females.append(str(f))
-for m in range(int(givenRange/2),givenRange):
+for m in range(givenRange,givenRange*2):
     males.append(str(m))
 
 
@@ -57,7 +54,7 @@ men = []
 for list in males:
     men.append(list)
 
-
+startTime = datetime.now()
 itr = len(men) - 1
 nextWoman = 0
 #set a counter to the men that are free
@@ -90,13 +87,11 @@ while(freeList[men[itr]] == -1 and itr >= 0):
     else:
         nextWoman += 1
 #execution_time = timeit.timeit(Self, number=1)
-print(freeList)
+print(givenRange, end="\t")
 print(datetime.now() - startTime)
+f = open("output.txt", "a")
+f.write(str(givenRange) + "\t" + str(datetime.now() - startTime) + "\n")
+f.close()
 #print(execution_time)
 
-def main():
-    print("")
-
-if __name__=="__main__":
-    main()
 
