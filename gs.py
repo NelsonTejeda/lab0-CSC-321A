@@ -1,8 +1,17 @@
+#Stable Matching
+#Created by: Nelson Tejeda
+#Date: 11/30/2021
+#Purpose: takes as input equal numbers of two types of participants (n men and n women) each participant giving their preference for whom to be matched to among the participants.
+#Input: yes/no
+#Output: people, preferences, realtime prints
 import random
+import os
 
 
 females = ["ada","aja","aki","alix","ally","alma","amy", "ann","anna","ara"]
 males = ["pete","zane","chet","che","dane","guy","grey","kai","van","jax"]
+
+trueFemales = females.copy()
 
 
 def randomizeFemales(f):
@@ -116,8 +125,14 @@ while(freeList[men[itr]] == 0 and itr >= 0):
         print(w + " rejects " + m)
         nextWoman += 1
 
+print("Participants:")
+print(males)
+print(trueFemales)
+print("Preferences:")
+print(preferences)
+print("Pairings:")
 print(freeList)
-print(men)
-print(itr)
-
+runAgain = input("Run Again (y)/(n)?")
+if(runAgain == "y"):
+    os.system('python3 gs.py')
 #jax,anna -> van,anna

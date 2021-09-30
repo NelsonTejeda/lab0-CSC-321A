@@ -1,7 +1,17 @@
 #!/usr/bin/python
+
+#Stable Matching
+#Created by: Nelson Tejeda
+#Date: 11/30/2021
+#Purpose: takes as input equal numbers integers each integer giving their preference for whom to be matched to among the integers. Add the number of suitors and time it took
+#Input: number of suitors
+#Output: number of suitors and time it took to run
+
 import random
 import sys
 from datetime import datetime
+
+startTime = datetime.now()
 
 givenRange = int(str(sys.argv[1]))
 
@@ -54,7 +64,6 @@ men = []
 for list in males:
     men.append(list)
 
-startTime = datetime.now()
 itr = len(men) - 1
 nextWoman = 0
 #set a counter to the men that are free
@@ -90,7 +99,7 @@ while(freeList[men[itr]] == -1 and itr >= 0):
 print(givenRange, end="\t")
 print(datetime.now() - startTime)
 f = open("output.txt", "a")
-f.write(str(givenRange) + "\t" + str(datetime.now() - startTime) + "\n")
+f.write(str(givenRange) + "\t" + str((datetime.now() - startTime).total_seconds()) + "\n")
 f.close()
 #print(execution_time)
 
