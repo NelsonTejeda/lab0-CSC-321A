@@ -11,7 +11,6 @@ import random
 import sys
 from datetime import datetime
 
-startTime = datetime.now()
 
 givenRange = int(str(sys.argv[1]))
 
@@ -63,7 +62,8 @@ for flf in females:
 men = []
 for list in males:
     men.append(list)
-
+    
+startTime = datetime.now()
 itr = len(men) - 1
 nextWoman = 0
 #set a counter to the men that are free

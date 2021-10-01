@@ -2,7 +2,7 @@
 #Created by: Nelson Tejeda
 #Date: 11/30/2021
 #Purpose: takes as input equal numbers of two types of participants (n men and n women) each participant giving their preference for whom to be matched to among the participants.
-#Input: yes/no
+#Input: y/n
 #Output: people, preferences, realtime prints
 import random
 import os

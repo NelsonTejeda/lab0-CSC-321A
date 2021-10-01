@@ -11,3 +11,5 @@ to run test just enter "python3 test.py" in the command line.
 ./test.py should work but if not run the suggest way.
 
 output.txt is empty by default.
+
+if problems occur: https://github.com/NelsonTejeda/pythonStableMatching
