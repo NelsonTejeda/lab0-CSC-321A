@@ -1,15 +1,9 @@
-Files are named differently than the project suggested file names
+Revised Vvrsion
 
-gs is still called gs.py
+commands:
 
-gs1 is called stableSort.py
+./gs.py
 
-run-gs1 is called test
+./gs1.py 1000
 
-to run test just enter "python3 test.py" in the command line.
-
-./test.py should work but if not run the suggest way.
-
-output.txt is empty by default.
-
-if problems occur: https://github.com/NelsonTejeda/pythonStableMatching
+./run-gs1.py

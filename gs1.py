@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # Stable Matching
 # Created by: Nelson Tejeda

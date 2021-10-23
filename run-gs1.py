@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # Stable Matching
 # Created by: Nelson Tejeda
 #Date: 11/30/2021
@@ -11,10 +11,10 @@ import time
 import subprocess
 
 
-for i in range(1000, 5001, 200):
-    os.system('python gs1.py {}'.format(i))
+for i in range(1000, 5001, 1000):
+    os.system('python3 gs1.py {}'.format(i))
 
-proc = subprocess.Popen(['gnuplot', '-p'],
+proc = subprocess.Popen(['gnuplot -persist'],
                         shell=True,
                         stdin=subprocess.PIPE,
                         )
